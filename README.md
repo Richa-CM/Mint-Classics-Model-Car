@@ -26,3 +26,15 @@ The answers to questions like those should help you to formulate suggestions and
 
 ## Project Challenge
 Conduct an exploratory data analysis to investigate if there are any patterns or themes that may influence the reduction or reorganization of inventory in the Mint Classics storage facilities. To do this, you will import the database and then analyze data. You will also pose questions, and seek to answer them meaningfully using SQL queries to retrieve data from the database provided.
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+# 1. Database Import
+
+# 2. Data Understanding
+
+# 3. Analysis Techniques
+
+# 4. Insights and Conclusions
