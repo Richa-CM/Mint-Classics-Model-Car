@@ -32,6 +32,11 @@ Conduct an exploratory data analysis to investigate if there are any patterns or
 &nbsp;
 
 # 1. Database Import
+For this part, we are given the required database, **mintclassicsDB**, which I will import to MySQL Workbench. Once MySQL Workbench is setup, go to `Server > Data Import` and select `Import from Self-Contained File` and choose the database file, and click `Start Import` from the bottom of the window. This will import the required schema and database to your MySQL server. 
+
+## 1.1 Extended Entity-Relationship Diagram
+![EER Diagram for mintclassicsDB](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/jBRNreo5Sh-41b3l0jBkCw_c3a54862d56945659bdb44bc07a368f1_MintClassicsDataModel.png?expiry=1705536000000&hmac=VqGS_0g-c8JQEgveX_BYYfkiR_K3I4LKiypqxexSyeQ)
+
 
 # 2. Data Understanding
 
