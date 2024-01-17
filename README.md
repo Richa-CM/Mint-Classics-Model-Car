@@ -58,6 +58,62 @@ As expect, _warehouses_ table holds the information regarding warehouse - such a
 
 Warehouse `C` has lowest percentage capacity, at 50%, and Warehouse `D` has highest capacity, at 75%. From that informaiton alone we can identify that Warehouse `C` will be use to hold extra inventory from warehouse we identify to close, if additional space is needed then we can utlize other two warehouses. 
 
+## 2.2 Products Table
+```sql
+-- Sort by quantity in stock and warehouse code
+SELECT *
+FROM products p
+WHERE quantityInStock >= 9000
+OR quantityInStock <= 1000
+ORDER BY quantityInStock desc, warehouseCode;
+```
+
+Result
+
+<img width="1080" alt="Products table filter by quantityInStock" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/cb430826-95b5-483c-9df4-577fe28ae30a">
+
+
+As seen from the image above, products with high and low quantity in stock are scattered across warehouses `b`, `c`, and `a`. There are few products from warehouse `d` in the above query but not in the end of the spectrum. 
+
+```sql
+-- Filter by selling price greater than 150 or buying price less than 30
+SELECT *
+FROM products p
+WHERE p.MSRP >= 150
+OR p.buyPrice <= 30
+ORDER by p.MSRP desc;
+```
+<img width="1150" alt="Products table filter by MSRP and buyPrice" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/8aa8997b-869a-480a-ad69-e0b0ef623616">
+
+Again, this result is scatter across warehouses other than warehouse `D`. It is clear from above two result set that there is no correlation between product (buying/selling) price and warehouse it is utlized. 
+
+## 2.3 Order Details Table
+```sql
+SELECT *
+FROM orderdetails;
+```
+
+Result
+
+<img width="627" alt="Orderdetails table" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/7df09ac7-b497-4fdd-b592-459519ebd01e">
+
+This table will be useful to identity products' demand if we sum up the quantity _ordered_ so far. 
+
+## 2.4 Orders Table
+```sql
+SELECT *
+FROM orders;
+```
+
+Result
+<img width="1222" alt="Orders Table" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/c3c947e7-7737-4b08-a0a1-675afe929e2f">
+
+This table stores some useful information related to orders such as time it took from order placement to shippment, order status since not all orders are shipped so inventory count in products table will not reflect orders that are in progress or pending. 
+
+## 2.5 Unkown Variables
+Even though table name and column name are self-explaintory, we are unsure what _warehousePctCap_ means, nor do we know what _orderLineNumber_ means in **orderdetails** table. Though, this should not affect data validity. 
+
+
 # 3. Analysis Techniques
 
 # 4. Insights and Conclusions
