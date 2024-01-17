@@ -183,7 +183,18 @@ As we can see from the result, majority of products sold so far are around 1,000
 <img width="805" alt="Sort by stockPct" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/ce89c53a-2cf4-4e74-a28f-276137b0eae9">
 
 
+## 3.3 Are we storing items that are not moving? Are any items candidates for being dropped from the product line?
 
 
 
 # 4. Insights and Conclusions
+Based on our findings from _Section 3_, there is clear indication that:
+
+1. Warehouse D can be closed/eliminated and move inventory to Warehouse C or B.
+2. There is no correlation between quantity in stock and products' demand.
+3. There is no correlation between quantity in stock and products' buying price.
+4. There is no correlation between quantity in stock and products' selling price.
+5. There is no inventory management at place.
+
+## Recommendation
+Implementing inventory management principles and best practices, reduce overhead quantity in stock and increase quantity in stock for understock products would help business achieve higher revenue and profit and decrease operating cost. 
