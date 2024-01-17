@@ -147,5 +147,43 @@ Converting this into a simple table, and using information from `2.1` then we ge
 
 This answers our first question - if [items] are rearranged, could a warehouse be eliminated. Yes, we can eliminate/close **Warehouse D** and move inventory to either Warehouse `C` or `B` since both have available space. 
 
+## 3.2 How are inventory numbers related to sales figures? Do the inventory counts seem appropriate for each item?
+```sql
+-- Find total number of item sold, percentage in stock, and markup percentage
+SELECT 
+    p.productCode,
+    p.productName,
+    p.warehouseCode,
+    SUM(od.quantityOrdered) AS totalItemsSold,
+    p.quantityInStock,
+    (p.quantityInStock / (SUM(od.quantityOrdered) + p.quantityInStock)) * 100 AS stockPct,
+    p.buyPrice,
+    p.MSRP,
+    ROUND((p.MSRP - p.buyPrice) * 0.01 * 100, 2) AS markupPct
+FROM orderdetails od
+JOIN products p
+    ON od.productCode = p.productCode
+JOIN orders o
+    ON o.orderNumber = od.orderNumber
+WHERE o.status in ('Shipped', 'Resolved')
+GROUP BY p.productCode , p.productName , p.quantityInStock
+ORDER BY totalItemsSold desc, stockPct DESC , markupPct DESC;
+```
+
+Result
+
+<img width="800" alt="Total number of each product sold, percentage in stock and markup percentage" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/fd5acf95-ab66-496c-b694-c67ecec3b2e0">
+
+&nbsp; 
+
+As we can see from the result, majority of products sold so far are around 1,000 quantities, and we have over 9,000 quantities in stock. That is over 90% stock in warehouse, which seems too high considering that demand is not that different than other products. 
+
+&nbsp; 
+
+<img width="805" alt="Sort by stockPct" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/ce89c53a-2cf4-4e74-a28f-276137b0eae9">
+
+
+
+
 
 # 4. Insights and Conclusions
