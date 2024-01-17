@@ -37,8 +37,26 @@ For this part, we are given the required database, **mintclassicsDB**, which I w
 ## 1.1 Extended Entity-Relationship Diagram
 ![EER Diagram for mintclassicsDB](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/jBRNreo5Sh-41b3l0jBkCw_c3a54862d56945659bdb44bc07a368f1_MintClassicsDataModel.png?expiry=1705536000000&hmac=VqGS_0g-c8JQEgveX_BYYfkiR_K3I4LKiypqxexSyeQ)
 
+From 1.1, it is clear that **Warehouses**, **Products**, **OrderDetails**, and **Order** tables will be helpful answering our business question.
+
+&nbsp;
+&nbsp;
+&nbsp;
 
 # 2. Data Understanding
+In this section, we will be looking into each of the mention tables in _1.1_ in details and try to understand the business information capture in those tables. 
+
+## 2.1 Warehouses Table
+```sql
+SELECT *
+FROM warehouses;
+```
+
+As expect, _warehouses_ table holds the information regarding warehouse - such as name, location, and what looks like current capacity percentage. 
+
+<img width="540" alt="Warehouses Table" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/1630dd37-c04f-4504-aafd-aa91db058b45">
+
+Warehouse `C` has lowest percentage capacity, at 50%, and Warehouse `D` has highest capacity, at 75%. From that informaiton alone we can identify that Warehouse `C` will be use to hold extra inventory from warehouse we identify to close, if additional space is needed then we can utlize other two warehouses. 
 
 # 3. Analysis Techniques
 
