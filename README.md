@@ -113,7 +113,39 @@ This table stores some useful information related to orders such as time it took
 ## 2.5 Unkown Variables
 Even though table name and column name are self-explaintory, we are unsure what _warehousePctCap_ means, nor do we know what _orderLineNumber_ means in **orderdetails** table. Though, this should not affect data validity. 
 
+&nbsp;
+&nbsp;
+&nbsp;
 
 # 3. Analysis Techniques
+## 3.1 Could a warehouse be eliminated?
+To answer this question, we need to find out current products in warehouse and total capacity (100%) of warehouse. To do this, we need to utlize **warehouses**, **products**, **orderdetails**, and **order** tables as following:
+
+```sql
+-- Query to find total items in each warehouse 
+SELECT 
+    SUM(CASE WHEN p.warehouseCode = 'a' THEN p.quantityInStock ELSE 0 END) AS inventoryCountA,
+    SUM(CASE WHEN p.warehouseCode = 'b' THEN p.quantityInStock ELSE 0 END) as  inventoryCountB,
+    SUM(CASE WHEN p.warehouseCode = 'c' THEN p.quantityInStock ELSE 0 END) AS inventoryCountC, 
+    SUM(CASE WHEN p.warehouseCode = 'd' THEN p.quantityInStock ELSE 0 END) AS inventoryCountD
+FROM
+    mintclassics.products p;
+```
+
+Result
+
+<img width="436" alt="Inventory Count for each warehouse" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/dd147451-4ac2-4fc1-b00b-ea664892efc7">
+
+Converting this into a simple table, and using information from `2.1` then we get
+
+| Warehouse | Current Capacity (%) | Available Capacity (%) | Full Capacity |
+| --- | --- | --- | --- |
+| Warehouse A | 131,688 (72%) | 51,212 (28%) | 182,900 (100%) |
+| Warehouse B | 219,183 (67%) | 107,957 (33%) | 327,140 (100%) |
+| Warehouse C | 124,880 (50%) | 124,880 (50%) | 249,760 (100%) | 
+| Warehouse D | 79,380 (75%) | 26,460 (25%) | 105,840 (100%) |
+
+This answers our first question - if [items] are rearranged, could a warehouse be eliminated. Yes, we can eliminate/close **Warehouse D** and move inventory to either Warehouse `C` or `B` since both have available space. 
+
 
 # 4. Insights and Conclusions
