@@ -118,6 +118,9 @@ Even though table name and column name are self-explaintory, we are unsure what 
 &nbsp;
 
 # 3. Analysis Techniques
+
+&nbsp;
+
 ## 3.1 Could a warehouse be eliminated?
 To answer this question, we need to find out current products in warehouse and total capacity (100%) of warehouse. To do this, we need to utlize **warehouses**, **products**, **orderdetails**, and **order** tables as following:
 
@@ -182,10 +185,26 @@ As we can see from the result, majority of products sold so far are around 1,000
 
 <img width="805" alt="Sort by stockPct" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/ce89c53a-2cf4-4e74-a28f-276137b0eae9">
 
+<img width="800" alt="Quantity sold vs in stock graph" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/168478f7-1a77-4612-b257-58e303360c88">
+
+<img width="800" alt="Quantity in stock" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/79e506ea-5f68-47e1-b344-531a4694adf0">
+
+<img width="800" alt="Price vs quantity in stock graph" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/3413d989-92c1-4b8b-9119-0cc0ca63f78b">
+
+<img width="800" alt="Warehouse code vs quantity in stock graph" src="https://github.com/Richa-CM/Mint-Classics-Model-Car/assets/156695804/d92450e3-052f-4978-8dea-6f8fc788fc7d">
+
+&nbsp;
+&nbsp;
+
+As we can see from graphs above, there is no clear correlation between quantity in stock and factors such as quantity sold, warehouse it is stored, neither prices. Majority of products are overstock, **inventory count for each item is not appropriate** according to graphs above.
+
 
 ## 3.3 Are we storing items that are not moving? Are any items candidates for being dropped from the product line?
+As we can see from _3.2_, there were no items that are not moving. Thus, there are no candidates from being dropped from the product line. However, quantities are overstock, thus, could be lowered to accommodate new or other products, potentially allowing to close additional warehouse. 
 
-
+&nbsp;
+&nbsp;
+&nbsp;
 
 # 4. Insights and Conclusions
 Based on our findings from _Section 3_, there is clear indication that:
@@ -194,7 +213,7 @@ Based on our findings from _Section 3_, there is clear indication that:
 2. There is no correlation between quantity in stock and products' demand.
 3. There is no correlation between quantity in stock and products' buying price.
 4. There is no correlation between quantity in stock and products' selling price.
-5. There is no inventory management at place.
+5. There is no inventory management at the company.
 
 ## Recommendation
 Implementing inventory management principles and best practices, reduce overhead quantity in stock and increase quantity in stock for understock products would help business achieve higher revenue and profit and decrease operating cost. 
